@@ -96,19 +96,14 @@ const FeeCalculator = () => {
   };
   
   const coursesList = selectedFee === "Exam Fee" ? ["Medical", "Dental", "Ayurveda"] : Object.keys(fees[selectedFee]?.[selectedNationality] || {});
-  const levelsList = selectedCourse === "ALL_COURSES" ? ["UG", "PG", "DIPLOMA", "Ph.D"] : Object.keys(fees[selectedFee]?.[selectedNationality]?.[selectedCourse] || {});
+  const levelsList = selectedCourse === "ALL_COURSES" ? ["UG", "PG", "DIPLOMA", "Ph.D"] : Object.keys(fees[selectedFee]?.[selectedNationality]?.['ALL_COURSES​'] || {});
 
   const calculateResultingFee = (level) => {
     if (selectedFee && selectedNationality && selectedCourse && level) {
-      const feeAmount = fees[selectedFee][selectedNationality][selectedCourse][level]?.amount;
+      const feeAmount = fees[selectedFee][selectedNationality]['ALL_COURSES​'][level]?.amount;
       setResultingFee(feeAmount || 'Error');
     }
   };
-
-  console.log('---', selectedCourse);
-  console.log('0000', selectedLevel);
-  console.log('1111', coursesList);
-  console.log('2222', levelsList);
 
   return (
     <div className="FeeContainer">
